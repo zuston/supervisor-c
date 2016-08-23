@@ -7,5 +7,6 @@
 
 int zstrlen(char *string);
 char *zstrcat(char *rootstring,char *catstring);
+char **zstrsplit(char *string,char splitflag);
 
 #endif
