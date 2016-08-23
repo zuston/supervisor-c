@@ -15,7 +15,7 @@ char *zstrcat(char *rootstring,char *catstring){
 	int catstring_count = zstrlen(catstring);
 
 	int need_count = rootstring_count+catstring_count;
-	int tmparray[need_count];
+	int tmparray[need_count+1];
 
 	strcpy(tmparray,rootstring);
 	strcat(tmparray,catstring);
