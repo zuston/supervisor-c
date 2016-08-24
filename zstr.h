@@ -5,8 +5,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAXLENGTH 80
+
 int zstrlen(char *string);
 char *zstrcat(char *rootstring,char *catstring);
 char **zstrsplit(char *string,char splitflag);
+
+char **zstrsplit2str(char *string,char *splitstring);
+
 
 #endif

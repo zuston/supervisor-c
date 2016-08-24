@@ -15,7 +15,7 @@ char *zstrcat(char *rootstring,char *catstring){
 	int catstring_count = zstrlen(catstring);
 
 	int need_count = rootstring_count+catstring_count;
-	int tmparray[need_count+1];
+	int *tmparray = malloc(need_count+1);
 
 	strcpy(tmparray,rootstring);
 	strcat(tmparray,catstring);
@@ -28,33 +28,32 @@ char **zstrsplit(char *string,char splitflag){
 	char **lastres = splitarray;
 	char *split = string;
 	while(*split!='\0'){
-		// static int fl = 1;
 		int count = 0;
 		char tmpstring[80];
+
+		if(*split=='\0'){
+			break;
+		}
 		while(*split!=splitflag&&*split!='\0'){
 			tmpstring[count] = *split;
 			split++;
 			count++;
-
 		}
 		if(count==0){
-			// printf("%c\n", *split);
 			split++;
 			continue;
 		}
-		char tmparray[count];
+		char *tmparray = malloc(count*sizeof(char));
 		strcpy(tmparray,tmpstring);
-		// printf("%s\n", tmparray);
-
-		strcpy(*splitarray,tmparray);
-		// printf("%s\n", *lastres);
+		*splitarray = tmparray;
 		*splitarray++;
-		// free(tmpstring);
 		continue;
-		// fl++;
 	}
 	*splitarray = NULL;
-
 	return lastres;
 }
 
+
+char **zstrsplit2str(char *string,char *splitstring){
+	return NULL;
+}

@@ -6,10 +6,11 @@
 #include <string.h>
 
 #define ZDB_PATH "/usr/local/zdb/"
-
+#define ZDB_PREFIX ".log"
 
 #define IO_SUCCESS 1
 #define IO_FAIL 0
+
 
 char *DB_read(char *db_name,char *db_table);
 int DB_write(char *db_name,char *db_table,char *content);
@@ -17,9 +18,9 @@ int DB_find(char *db_name,char *db_table,char *findcontent);
 void DB_list(char *db_name);
 void DB_all_list();
 
-void testMain();
-
 int DB_checkpath(char *path);
+char *directPath(char *db_name,char *db_table);
+char *absoultPath(char *db_name,char *db_table);
 
 
 #endif
