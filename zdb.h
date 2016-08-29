@@ -15,8 +15,8 @@
 char *DB_read(char *db_name,char *db_table);
 int DB_write(char *db_name,char *db_table,char *content);
 int DB_find(char *db_name,char *db_table,char *findcontent);
-void DB_list(char *db_name);
-void DB_all_list();
+int DB_list(char *db_name);
+int DB_all_list();
 
 int DB_checkpath(char *path);
 char *directPath(char *db_name,char *db_table);

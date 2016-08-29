@@ -1,4 +1,5 @@
 #include "zstr.h"
+#include "zdebug.h"
 
 int zstrlen(char *string){
 	int count = 0;
@@ -43,10 +44,13 @@ char **zstrsplit(char *string,char splitflag){
 			split++;
 			continue;
 		}
-		char *tmparray = malloc(count*sizeof(char));
+		tmpstring[count] = '\0';
+		char *tmparray = malloc(count+1);
 		strcpy(tmparray,tmpstring);
+		// char *tmarr = zstrcat(tmparray,"\0");
 		*splitarray = tmparray;
-		*splitarray++;
+		// debug_info2string(tmparray);
+		splitarray++;
 		continue;
 	}
 	*splitarray = NULL;

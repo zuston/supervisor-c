@@ -20,4 +20,6 @@
 #define debug_info2int(message) if(NDEBUG){fprintf(stderr, "[DEBUG_INFO]\t%s:%d\tMsg:%d\n", __FILE__,__LINE__,message);}
 #define debug_info2char(message) if(NDEBUG){fprintf(stderr, "[DEBUG_INFO]\t%s:%d\tMsg:%c\n", __FILE__,__LINE__,message);}
 
+#define np(n) for(int i=0;i<n;i++){printf("---------------------------------------------------\n");}
+
 #endif

@@ -1,6 +1,7 @@
 #include "zdb.h"
 #include "zstr.h"
 #include "zdebug.h"
+#include <dirent.h> 
 // #include "direct.h"
 
 int DB_checkpath(char *path){
@@ -74,12 +75,8 @@ int DB_write(char *db_name,char *db_table,char *content){
 
     char *ncontent = zstrcat(content,"\n");
     fputs(ncontent,file);
+    // 将文本string放入文件，并将指针移动到文件头部
     rewind(file);
-    char ch = fgetc(file);
-    while(ch!=EOF){
-        putchar(ch);
-        ch=fgetc(file);
-    }
     fclose(file);
 
     return IO_SUCCESS;
@@ -87,15 +84,52 @@ error:
     return -1;
 }
 
-void DB_list(char *dbname){
+int DB_list(char *dbname){
+    DIR *dir = opendir(zstrcat(ZDB_PATH,dbname));
+    check(dir,"the dir dont exist");
+    struct dirent *direntp;
+    if(dir!=NULL){
+        np(1);
+        printf("库名:\t%s\t\n", dbname);
+        while(1){
+            direntp = readdir(dir);
+            if(direntp==NULL){break;}
+            if(direntp->d_name[0]!='.'){
+                char *tablename = direntp->d_name;
+                // debug_info2string(tablename);
+                // char **splitarray = zstrsplit("zu-ds",'-');
+                // debug_info2int(zstrlen("asdsad"));
+                printf("表名:\t%s\t\n", tablename);
+            }
+        }
+        np(1);
+        closedir(dir);
+        return IO_SUCCESS;
+    }
+error:
+    return IO_FAIL;
 
 }
 
-void DB_all_list(){
-
+int DB_all_list(){
+    DIR *dir = opendir(ZDB_PATH);
+    check(dir,"the zdb_path donot exist");
+    struct dirent *dirstr;
+    while(1){
+        dirstr = readdir(dir);
+        if(dirstr==NULL){break;}
+        if(dirstr->d_name[0]!='.'){
+            debug_info2string(dirstr->d_name);
+            DB_list(dirstr->d_name);
+        }
+    }
+    return IO_SUCCESS;
+error:
+    return IO_FAIL;
 }
 
 int DB_find(char *db_name,char *db_table,char *findcontent){
+
     return IO_SUCCESS;
 }
 

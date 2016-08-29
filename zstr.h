@@ -13,5 +13,4 @@ char **zstrsplit(char *string,char splitflag);
 
 char **zstrsplit2str(char *string,char *splitstring);
 
-
 #endif

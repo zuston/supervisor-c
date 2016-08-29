@@ -19,9 +19,19 @@ void t_dbwrite(){
 	DB_write("zuston","sad","hahhahahh");
 }
 
+void t_dblist(char *dbname){
+	DB_list(dbname);
+}
+
+void t_dballlist(){
+	DB_all_list();
+}
+
 
 int main(int argc,char **argv){
-    t_dbwrite();
+    // t_dbwrite();
+    // t_dblist("test");
+    t_dballlist();
     return 0;
 }
 

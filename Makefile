@@ -7,7 +7,7 @@ main.o:main.c zdb.h zstr.h zdebug.h
 zdb.o:zdb.h zdebug.h zstr.h
 	gcc -c zdb.c
 
-zstr.o:zstr.h
+zstr.o:zstr.h zdebug.h
 	gcc -c zstr.c
 
 clean:
