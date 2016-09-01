@@ -22,6 +22,7 @@ char *absoultPath(char *db_name,char *db_table){
     return zstrcat(ZDB_PATH,directPath(db_name,db_table));
 }
 
+
 // 读取文件最后一行进行处理
 char *DB_read(char *db_name,char *db_table){
     char *direct_Path = directPath(db_name,db_table);
@@ -132,5 +133,7 @@ int DB_find(char *db_name,char *db_table,char *findcontent){
 
     return IO_SUCCESS;
 }
+
+
 
 

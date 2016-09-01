@@ -11,7 +11,7 @@
 #define IO_SUCCESS 1
 #define IO_FAIL 0
 
-
+// 直接api函数，整合select * from db_name;
 char *DB_read(char *db_name,char *db_table);
 int DB_write(char *db_name,char *db_table,char *content);
 int DB_find(char *db_name,char *db_table,char *findcontent);

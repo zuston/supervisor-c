@@ -27,6 +27,11 @@ void t_dballlist(){
 	DB_all_list();
 }
 
+void t_dbfind(){
+    //test the db find function
+    
+}
+
 
 int main(int argc,char **argv){
     // t_dbwrite();
